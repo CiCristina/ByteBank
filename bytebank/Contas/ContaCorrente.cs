@@ -10,11 +10,25 @@ namespace bytebank.Contas
     public class ContaCorrente
     {
 
-        public int numero_agencia;
-        public string conta;
-        public double saldo = 100;
+        private int numero_agencia;
 
-        public Cliente titular;
+        public int Numero_agencia //recomendado colocar primeira letra M na propriedade
+        {
+            get { return this.numero_agencia;} //propriedade publica p manipular campos
+            set { 
+                        if (value > 0)
+                        {
+                        this.numero_agencia = value;
+                        }
+            }
+        } 
+
+        //private string conta;
+        public string Conta { get; set; } //como defini essa propriedade, n tenho mais campo conta q era privado
+
+        private double saldo = 100; 
+
+        public Cliente Titular { get; set; }
 
         public void Depositar(double valor)
         {
@@ -46,8 +60,8 @@ namespace bytebank.Contas
                 return true;
             }
         }
-       
-        public void SetSaldo(double valor)
+        
+        public void SetSaldo(double valor) //Definir
         {
             if(valor < 0)
             {
@@ -55,11 +69,11 @@ namespace bytebank.Contas
             }
             else
             {
-                this.saldo = valor;
+                this.saldo = valor; //pode ser saldo = saldo+valor (conferir uso do this)
             }
         }
 
-        public double GetSaldo()
+        public double GetSaldo() //Obter
         {
             return this.saldo;
         }
