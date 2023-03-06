@@ -9,13 +9,14 @@ namespace bytebank.Contas
 {
     public class ContaCorrente
     {
+        public static int TotalDeContasCriadas { get; private set; } //com "static" a propriedade passa a ser da classe e n dos objetos 
 
         private int numero_agencia;
 
-        public int Numero_agencia //recomendado colocar primeira letra M na propriedade
+        public int Numero_agencia //Propriedade (recomendado primeira letra maiuscula)
         {
             get { return this.numero_agencia;} //propriedade publica p manipular campos
-            set { 
+            private set { 
                         if (value > 0)
                         {
                         this.numero_agencia = value;
@@ -77,7 +78,13 @@ namespace bytebank.Contas
         {
             return this.saldo;
         }
-              
+
+        public ContaCorrente(int numero_agencia, string numero_conta)
+        {
+            this.Numero_agencia = numero_agencia; //receber numero_agencia passado por parametro
+            this.Conta = numero_conta; //this faz refer. a instancia do objeto
+            TotalDeContasCriadas++;
+        }
 
 
     }
